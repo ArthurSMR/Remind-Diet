@@ -8,25 +8,21 @@
 
 import SwiftUI
 
-struct Meal: Hashable {
-    var time: Date = Date()
-}
-
 struct CreateDiet: View {
     
     @Binding var showModal: Bool
-    @State var nameText: String = "Nova dieta"
+    @State var name: String = "Nova dieta"
     @State var meals: [Meal] = []
     @State var initialDate: Date = Date()
     @State var finishDate: Date = Date()
-    @ObservedObject var dietViewModel: DietViewModel = DietViewModel()
+    var dietListViewModel: DietListViewModel
     
     var body: some View {
         NavigationView {
             
                 Form {
                     Section {
-                        TextField("Nova dieta", text: $nameText)
+                        TextField("Nova dieta", text: $name)
                     }
                     Section {
                         FormCell(rightString: "Dias da semana", detailString: "Todos os dias")
@@ -50,14 +46,14 @@ struct CreateDiet: View {
                 .listStyle(GroupedListStyle())
                 .navigationBarTitle("Criar dieta", displayMode: .inline)
                 .navigationBarItems(trailing: Button("Salvar") {
-                    self.save()
+                    self.saveNewDiet()
+                    self.showModal.toggle()
                 })
         } // Navigation View
     }
     
-    func save() {
-        dietViewModel.saveDiet(name: nameText, days: [], initialDate: initialDate, finishDate: finishDate, meals: meals)
-        self.showModal.toggle()
+    func saveNewDiet() {
+        self.dietListViewModel.save(name: self.name, days: "Todos os dias", initialDate: self.initialDate, finishDate: self.finishDate, meals: self.meals)
     }
 }
 
@@ -88,6 +84,6 @@ struct CreateDiet_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        CreateDiet(showModal: .constant(true), meals: [])
+        CreateDiet(showModal: .constant(true), dietListViewModel: DietListViewModel())
     }
 }

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class DietViewModel: ObservableObject {
+class DietListViewModel: ObservableObject {
     @Published private var dietViewModel: Diet
     
     static func createDiet(name: String, days: [String], initialDate: Date, finishDay: Date, meals: [Meal]) -> Diet {
@@ -16,11 +16,11 @@ class DietViewModel: ObservableObject {
     }
     
     init(name: String, days: [String], startDay: Date, finishDay: Date, meals: [Meal]) {
-        self.dietViewModel = DietViewModel.createDiet(name: name, days: days, initialDate: startDay, finishDay: finishDay, meals: meals)
+        self.dietViewModel = DietListViewModel.createDiet(name: name, days: days, initialDate: startDay, finishDay: finishDay, meals: meals)
     }
     
     init() {
-        self.dietViewModel = DietViewModel.createDiet(name: "Nova dieta", days: [], initialDate: Date(), finishDay: Date(), meals: [])
+        self.dietViewModel = DietListViewModel.createDiet(name: "Nova dieta", days: [], initialDate: Date(), finishDay: Date(), meals: [])
     }
     
     // MARK: - Access to the model
@@ -48,7 +48,7 @@ class DietViewModel: ObservableObject {
     // MARK: - Intents
     
     func saveDiet(name: String, days: [String], initialDate: Date, finishDate: Date, meals: [Meal]) {
-        self.dietViewModel = DietViewModel.createDiet(name: name, days: days, initialDate: initialDate, finishDay: finishDate, meals: meals)
+        self.dietViewModel = DietListViewModel.createDiet(name: name, days: days, initialDate: initialDate, finishDay: finishDate, meals: meals)
     }
 }
 

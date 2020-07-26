@@ -8,18 +8,32 @@
 
 import Foundation
 
-struct Diet {
-    var name: String
-    var days: [String]
-    var initialDate: Date
-    var finishDate: Date
-    var meals: [Meal]
+struct DietList {
+    var diets: [Diet]
     
-    init(name: String, days: [String], startDay: Date, finishDay: Date, meals: [Meal]) {
-        self.name = name
-        self.days = days
-        self.initialDate = startDay
-        self.finishDate = finishDay
-        self.meals = meals
+    struct Diet: Hashable {
+        var name: String
+        var days: String
+        var initialDate: Date
+        var finishDate: Date
+        var meals: [Meal]
+        
+        init(name: String, days: String, initialDate: Date, finishDate: Date, meals: [Meal]) {
+            self.name = name
+            self.days = days
+            self.initialDate = initialDate
+            self.finishDate = finishDate
+            self.meals = meals
+        }
+        
+        func daysBetween() -> Int {
+            Calendar.current.dateComponents([.day], from: self.initialDate, to: self.finishDate).day ?? 0
+        }
     }
+}
+
+
+
+struct Meal: Hashable {
+    var time: Date = Date()
 }

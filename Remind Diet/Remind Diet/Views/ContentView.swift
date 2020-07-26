@@ -11,12 +11,15 @@ import SwiftUI
 struct ContentView: View {
     
     @State var showModal = false
+    @State var dietListViewModel: DietListViewModel
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                List(0..<3) { item in
-                    DietCell()
+                List {
+                    ForEach(dietListViewModel.diets, id: \.self) { diet in
+                        DietCell(diet: diet)
+                    }
                 } // List
                     .listStyle(GroupedListStyle())
                     .environment(\.horizontalSizeClass, .regular)
@@ -26,16 +29,15 @@ struct ContentView: View {
                 }) {
                     CreateNewDietButton()
                 }.sheet(isPresented: $showModal) {
-                    CreateDiet(showModal: self.$showModal)
+                    CreateDiet(showModal: self.$showModal, dietListViewModel: self.dietListViewModel)
                 }
-            }
+            } // VStack
         }
     }
 }
 
 struct CreateNewDietButton: View {
     var body: some View {
-        
         HStack() {
             Image(systemName: "plus.circle.fill")
             Text("Criar dieta")
@@ -47,16 +49,17 @@ struct CreateNewDietButton: View {
 struct DietCell: View {
     
     @State var isToggle: Bool = false
+    var diet: DietList.Diet
     
     var body: some View {
         Toggle(isOn: $isToggle) {
             VStack(alignment: .leading) {
-                Text("Secar o corpo")
+                Text(diet.name)
                     .font(.title)
                     .fontWeight(.semibold)
-                Text("Seg, Ter, Qui e Sáb")
+                Text(diet.days)
                     .foregroundColor(.gray)
-                Text("16 dias para o término da dieta")
+                Text("\(diet.daysBetween()) dias para o término da dieta")
                     .foregroundColor(.green)
             }
         }
@@ -65,6 +68,6 @@ struct DietCell: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(dietListViewModel: DietListViewModel())
     }
 }

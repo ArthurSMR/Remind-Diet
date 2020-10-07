@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var showModal = false
-    @State var dietListViewModel: DietListViewModel
+    @ObservedObject var dietListViewModel: DietListViewModel
     
     var body: some View {
         NavigationView {
@@ -21,9 +21,9 @@ struct ContentView: View {
                         DietCell(diet: diet)
                     }
                 } // List
-                    .listStyle(GroupedListStyle())
-                    .environment(\.horizontalSizeClass, .regular)
-                    .navigationBarTitle("Suas dietas")
+                .listStyle(GroupedListStyle())
+                .environment(\.horizontalSizeClass, .regular)
+                .navigationBarTitle("Suas dietas")
                 Button(action: {
                     self.showModal.toggle()
                 }) {

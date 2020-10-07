@@ -67,10 +67,9 @@
 				36E6FF1B24CC788A002A4B43 /* Models */,
 				36E6FF1A24CC787E002A4B43 /* ViewModels */,
 				36E6FF1924CC7869002A4B43 /* Views */,
-				36D79D8524CDFDB3009EAD29 /* Extensions */,
+				3698D89B252E2E30008CCFF0 /* Resources */,
 				363B3DCB24CB60CD00C11CB9 /* Assets.xcassets */,
 				363B3DD024CB60CD00C11CB9 /* LaunchScreen.storyboard */,
-				36D79D8324CDF37A009EAD29 /* MockDiets.swift */,
 				363B3DD324CB60CD00C11CB9 /* Info.plist */,
 				363B3DC524CB60C800C11CB9 /* AppDelegate.swift */,
 				363B3DC724CB60C800C11CB9 /* SceneDelegate.swift */,
@@ -87,11 +86,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		36D79D8524CDFDB3009EAD29 /* Extensions */ = {
+		3698D89B252E2E30008CCFF0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				36D79D8324CDF37A009EAD29 /* MockDiets.swift */,
 			);
-			path = Extensions;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		36E6FF1924CC7869002A4B43 /* Views */ = {
@@ -146,7 +146,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Arthur Rodrigues";
 				TargetAttributes = {
 					363B3DC124CB60C800C11CB9 = {
@@ -240,6 +240,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -300,6 +301,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -345,7 +347,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rodrigues.arthur.Remind-Diet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -366,7 +368,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "rodrigues.arthur.Remind-Diet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

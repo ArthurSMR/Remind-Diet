@@ -27,7 +27,7 @@ class DietListViewModel: ObservableObject {
     
     // MARK: - Intents
     
-    func save(name: String, days: String, initialDate: Date, finishDate: Date, meals: [Meal]) {
+    func save(name: String, days: DaysOfTheWeek, initialDate: Date, finishDate: Date, meals: [Meal]) {
         let newDiet = DietList.Diet(name: name, days: days, initialDate: initialDate, finishDate: finishDate, meals: meals)
         dietListViewModel.diets.append(newDiet)
     }

@@ -14,9 +14,14 @@
 		363B3DCF24CB60CD00C11CB9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 363B3DCE24CB60CD00C11CB9 /* Preview Assets.xcassets */; };
 		363B3DD224CB60CD00C11CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 363B3DD024CB60CD00C11CB9 /* LaunchScreen.storyboard */; };
 		363B3DDA24CB6A9200C11CB9 /* CreateDiet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B3DD924CB6A9200C11CB9 /* CreateDiet.swift */; };
+		368BCD9F2540ABDA00C2646E /* DietsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 368BCD9D2540ABDA00C2646E /* DietsModel.xcdatamodeld */; };
+		368BCDA52540AE5100C2646E /* CoreDataDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368BCDA42540AE5100C2646E /* CoreDataDAO.swift */; };
+		36CCF27B25376AAD00244D09 /* WeekDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CCF27A25376AAD00244D09 /* WeekDaysView.swift */; };
 		36D79D8424CDF37A009EAD29 /* MockDiets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D79D8324CDF37A009EAD29 /* MockDiets.swift */; };
 		36E6FF1624CC77C3002A4B43 /* Diet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E6FF1524CC77C3002A4B43 /* Diet.swift */; };
 		36E6FF1824CC785F002A4B43 /* DietListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E6FF1724CC785F002A4B43 /* DietListViewModel.swift */; };
+		36FDC5A82540A7510087ACE6 /* DaysOfTheWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FDC5A72540A7510087ACE6 /* DaysOfTheWeek.swift */; };
+		36FDC5B12540AAFA0087ACE6 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FDC5B02540AAFA0087ACE6 /* Meal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +34,14 @@
 		363B3DD124CB60CD00C11CB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		363B3DD324CB60CD00C11CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		363B3DD924CB6A9200C11CB9 /* CreateDiet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiet.swift; sourceTree = "<group>"; };
+		368BCD9E2540ABDA00C2646E /* DietsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DietsModel.xcdatamodel; sourceTree = "<group>"; };
+		368BCDA42540AE5100C2646E /* CoreDataDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDAO.swift; sourceTree = "<group>"; };
+		36CCF27A25376AAD00244D09 /* WeekDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysView.swift; sourceTree = "<group>"; };
 		36D79D8324CDF37A009EAD29 /* MockDiets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDiets.swift; sourceTree = "<group>"; };
 		36E6FF1524CC77C3002A4B43 /* Diet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diet.swift; sourceTree = "<group>"; };
 		36E6FF1724CC785F002A4B43 /* DietListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietListViewModel.swift; sourceTree = "<group>"; };
+		36FDC5A72540A7510087ACE6 /* DaysOfTheWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysOfTheWeek.swift; sourceTree = "<group>"; };
+		36FDC5B02540AAFA0087ACE6 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,15 +74,14 @@
 		363B3DC424CB60C800C11CB9 /* Remind Diet */ = {
 			isa = PBXGroup;
 			children = (
+				368BCDA32540ADBA00C2646E /* Main Application */,
 				36E6FF1B24CC788A002A4B43 /* Models */,
 				36E6FF1A24CC787E002A4B43 /* ViewModels */,
 				36E6FF1924CC7869002A4B43 /* Views */,
+				368BCDA22540AD7700C2646E /* Database */,
 				3698D89B252E2E30008CCFF0 /* Resources */,
-				363B3DCB24CB60CD00C11CB9 /* Assets.xcassets */,
 				363B3DD024CB60CD00C11CB9 /* LaunchScreen.storyboard */,
 				363B3DD324CB60CD00C11CB9 /* Info.plist */,
-				363B3DC524CB60C800C11CB9 /* AppDelegate.swift */,
-				363B3DC724CB60C800C11CB9 /* SceneDelegate.swift */,
 				363B3DCD24CB60CD00C11CB9 /* Preview Content */,
 			);
 			path = "Remind Diet";
@@ -86,9 +95,28 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		368BCDA22540AD7700C2646E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				368BCD9D2540ABDA00C2646E /* DietsModel.xcdatamodeld */,
+				368BCDA42540AE5100C2646E /* CoreDataDAO.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		368BCDA32540ADBA00C2646E /* Main Application */ = {
+			isa = PBXGroup;
+			children = (
+				363B3DC524CB60C800C11CB9 /* AppDelegate.swift */,
+				363B3DC724CB60C800C11CB9 /* SceneDelegate.swift */,
+			);
+			path = "Main Application";
+			sourceTree = "<group>";
+		};
 		3698D89B252E2E30008CCFF0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				363B3DCB24CB60CD00C11CB9 /* Assets.xcassets */,
 				36D79D8324CDF37A009EAD29 /* MockDiets.swift */,
 			);
 			path = Resources;
@@ -99,6 +127,7 @@
 			children = (
 				363B3DC924CB60C800C11CB9 /* ContentView.swift */,
 				363B3DD924CB6A9200C11CB9 /* CreateDiet.swift */,
+				36CCF27A25376AAD00244D09 /* WeekDaysView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				36E6FF1524CC77C3002A4B43 /* Diet.swift */,
+				36FDC5B02540AAFA0087ACE6 /* Meal.swift */,
+				36FDC5A72540A7510087ACE6 /* DaysOfTheWeek.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,12 +222,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				36D79D8424CDF37A009EAD29 /* MockDiets.swift in Sources */,
+				36FDC5A82540A7510087ACE6 /* DaysOfTheWeek.swift in Sources */,
 				36E6FF1624CC77C3002A4B43 /* Diet.swift in Sources */,
 				363B3DC624CB60C800C11CB9 /* AppDelegate.swift in Sources */,
+				36FDC5B12540AAFA0087ACE6 /* Meal.swift in Sources */,
 				36E6FF1824CC785F002A4B43 /* DietListViewModel.swift in Sources */,
 				363B3DDA24CB6A9200C11CB9 /* CreateDiet.swift in Sources */,
+				368BCD9F2540ABDA00C2646E /* DietsModel.xcdatamodeld in Sources */,
+				36CCF27B25376AAD00244D09 /* WeekDaysView.swift in Sources */,
 				363B3DC824CB60C800C11CB9 /* SceneDelegate.swift in Sources */,
 				363B3DCA24CB60C800C11CB9 /* ContentView.swift in Sources */,
+				368BCDA52540AE5100C2646E /* CoreDataDAO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +375,7 @@
 				DEVELOPMENT_TEAM = 9KU377264X;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Remind Diet/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -360,7 +396,7 @@
 				DEVELOPMENT_TEAM = 9KU377264X;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Remind Diet/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,6 +430,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		368BCD9D2540ABDA00C2646E /* DietsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				368BCD9E2540ABDA00C2646E /* DietsModel.xcdatamodel */,
+			);
+			currentVersion = 368BCD9E2540ABDA00C2646E /* DietsModel.xcdatamodel */;
+			path = DietsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 363B3DBA24CB60C800C11CB9 /* Project object */;
 }

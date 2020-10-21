@@ -13,12 +13,12 @@ struct DietList {
     
     struct Diet: Hashable {
         var name: String
-        var days: String
+        var days: DaysOfTheWeek
         var initialDate: Date
         var finishDate: Date
         var meals: [Meal]
         
-        init(name: String, days: String, initialDate: Date, finishDate: Date, meals: [Meal]) {
+        init(name: String, days: DaysOfTheWeek, initialDate: Date, finishDate: Date, meals: [Meal]) {
             self.name = name
             self.days = days
             self.initialDate = initialDate
@@ -30,10 +30,4 @@ struct DietList {
             Calendar.current.dateComponents([.day], from: self.initialDate, to: self.finishDate).day ?? 0
         }
     }
-}
-
-
-
-struct Meal: Hashable {
-    var time: Date = Date()
 }

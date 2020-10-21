@@ -13,13 +13,13 @@ class MockDiets {
     static var diets: [DietList.Diet] {
         var arr: [DietList.Diet] = []
         
-        var diet = DietList.Diet(name: "Secar o corpo", days: "Todos os dias", initialDate: Date(), finishDate: Date() + 520000, meals: [])
+        var diet = DietList.Diet(name: "Secar o corpo", days: DaysOfTheWeek.allDays, initialDate: Date(), finishDate: Date() + 520000, meals: [])
         arr.append(diet)
         
-        diet = DietList.Diet(name: "Emagrecimento", days: "Seg, Ter, Qua", initialDate: Date(), finishDate: Date() + 260000, meals: [])
+        diet = DietList.Diet(name: "Emagrecimento", days: DaysOfTheWeek.onlyWeekDays, initialDate: Date(), finishDate: Date() + 260000, meals: [])
         arr.append(diet)
         
-        diet = DietList.Diet(name: "Hipertrofia", days: "Dias da semana", initialDate: Date(), finishDate: Date() + 100000, meals: [])
+        diet = DietList.Diet(name: "Hipertrofia", days: DaysOfTheWeek.onlyWeekend, initialDate: Date(), finishDate: Date() + 100000, meals: [])
         arr.append(diet)
         
         return arr

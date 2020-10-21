@@ -15,6 +15,8 @@ struct CreateDiet: View {
     @State var meals: [Meal] = []
     @State var initialDate: Date = Date()
     @State var finishDate: Date = Date()
+    @State private var weekDayIndex = 0
+    
     var dietListViewModel: DietListViewModel
     
     var body: some View {
@@ -22,10 +24,16 @@ struct CreateDiet: View {
             
                 Form {
                     Section {
-                        TextField("Nova dieta", text: $name)
+                        TextField("", text: $name)
                     }
                     Section {
-                        FormCell(rightString: "Dias da semana", detailString: "Todos os dias")
+                        HStack {
+                            Picker(selection: $weekDayIndex, label: Text("Dias da semana")) {
+                                ForEach(0 ..< DaysOfTheWeek.allCases.count, id: \.self) {
+                                    Text(DaysOfTheWeek.allCases[$0].rawValue).tag(weekDayIndex)
+                                }
+                            }
+                        }
                         DatePicker("Início", selection: $initialDate, displayedComponents: .date)
                         DatePicker("Fim", selection: $finishDate, in: initialDate..., displayedComponents: .date)
 
@@ -53,7 +61,9 @@ struct CreateDiet: View {
     }
     
     func saveNewDiet() {
-        self.dietListViewModel.save(name: self.name, days: "Todos os dias", initialDate: self.initialDate, finishDate: self.finishDate, meals: self.meals)
+        let days = DaysOfTheWeek.allCases[weekDayIndex]
+        
+        self.dietListViewModel.save(name: self.name, days: days, initialDate: self.initialDate, finishDate: self.finishDate, meals: self.meals)
     }
 }
 
@@ -62,7 +72,11 @@ struct MealCell: View {
     @State var meal: Meal
     
     var body: some View {
-        DatePicker("Refeição \(index + 1)", selection: $meal.time, displayedComponents: .hourAndMinute)
+        if #available(iOS 14.0, *) {
+            DatePicker("Refeição \(index + 1)", selection: $meal.time, displayedComponents: .hourAndMinute)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 

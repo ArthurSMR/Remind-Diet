@@ -57,7 +57,7 @@ struct DietCell: View {
                 Text(diet.name)
                     .font(.title)
                     .fontWeight(.semibold)
-                Text(diet.days)
+                Text(diet.days.rawValue)
                     .foregroundColor(.gray)
                 Text("\(diet.daysBetween()) dias para o término da dieta")
                     .foregroundColor(.green)

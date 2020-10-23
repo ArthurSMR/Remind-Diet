@@ -6,19 +6,21 @@
 //  Copyright © 2020 Arthur Rodrigues. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct DietList {
     var diets: [Diet]
     
     struct Diet: Hashable {
+        var id: UUID
         var name: String
         var days: DaysOfTheWeek
         var initialDate: Date
         var finishDate: Date
         var meals: [Meal]
         
-        init(name: String, days: DaysOfTheWeek, initialDate: Date, finishDate: Date, meals: [Meal]) {
+        init(id: UUID,name: String, days: DaysOfTheWeek, initialDate: Date, finishDate: Date, meals: [Meal]) {
+            self.id = id
             self.name = name
             self.days = days
             self.initialDate = initialDate

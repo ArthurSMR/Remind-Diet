@@ -52,6 +52,10 @@ class DietListViewModel: ObservableObject {
             }
         }
     }
+    
+    func move(source: IndexSet, destination: Int) {
+        dietListViewModel.diets.move(fromOffsets: source, toOffset: destination)
+    }
 }
 
 struct FoodMemoryGame_Previews: PreviewProvider {

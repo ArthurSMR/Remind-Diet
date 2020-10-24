@@ -12,6 +12,7 @@ struct ContentView: View {
     
     @State var showModal = false
     @ObservedObject var dietListViewModel: DietListViewModel
+    @State private var editMode = EditMode.inactive
     
     var body: some View {
         NavigationView {
@@ -19,11 +20,20 @@ struct ContentView: View {
                 List {
                     ForEach(dietListViewModel.diets, id: \.self) { diet in
                         DietCell(diet: diet)
+                            .onLongPressGesture(perform: {
+                            self.showModal.toggle()
+                        }).sheet(isPresented: $showModal) {
+                            CreateDiet(showModal: $showModal, dietListViewModel: dietListViewModel) // Precisa setar tela como update
+                        }
                     }
+                    .onDelete(perform: onDelete)
+
                 } // List
-                .listStyle(GroupedListStyle())
-                .environment(\.horizontalSizeClass, .regular)
                 .navigationBarTitle("Suas dietas")
+                .listStyle(GroupedListStyle())
+                .navigationBarItems(leading: EditButton())
+                .environment(\.editMode, $editMode)
+                
                 Button(action: {
                     self.showModal.toggle()
                 }) {
@@ -34,6 +44,19 @@ struct ContentView: View {
             } // VStack
         }
     }
+    
+    func onAdd() {
+        // To be implemented in the next section
+    }
+    
+    private func onDelete(offsets: IndexSet) {
+        // To be implemented in the next section
+    }
+}
+
+
+
+func delete(diet: Diet) {
 }
 
 struct CreateNewDietButton: View {

@@ -32,13 +32,13 @@ extension DietEntity {
         
         return diet
     }
-}
-
-extension MealEntity {
-
-    func toModel() -> Meal {
-        let meal = Meal(time: self.time ?? Date())
-        print(self.time, self.diet?.name)
-        return meal
+    
+    func from(diet: Diet) {
+        self.id = diet.id
+        self.name = diet.name
+        self.initialDate = diet.initialDate
+        self.finishDate = diet.finishDate
+        self.frequency = diet.frequency.rawValue
+        self.meals = NSSet(array: diet.meals)
     }
 }

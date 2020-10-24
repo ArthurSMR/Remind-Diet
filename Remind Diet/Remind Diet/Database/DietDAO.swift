@@ -54,4 +54,42 @@ class DietDAO {
             throw CoreDataStoreError.CannotFetch("Could not load diets from CoreData")
         }
     }
+    
+    func update(diet: Diet) throws -> Diet {
+        
+        guard let managedDiet = try fetchManagedDiet(by: diet.id) else {
+            throw CoreDataStoreError.CannotUpdate("Could not find diet with id: \(diet.id)")
+        }
+        
+        managedDiet.from(diet: diet)
+        
+        do {
+            try self.context.save()
+            return managedDiet.toModel()
+            
+        } catch {
+            throw CoreDataStoreError.CannotUpdate("Could not update diet with id: \(diet.id)")
+        }
+    }
+    
+    private func fetchManagedDiet(by id: UUID) throws -> DietEntity? {
+        
+        let dietEntityFetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DietEntity")
+        dietEntityFetchRequest.predicate = NSPredicate(format: "id = %@", id as CVarArg)
+        
+        do {
+            let managedResults = try self.context.fetch(dietEntityFetchRequest)
+            
+            if let managedDiet = managedResults.first as? DietEntity {
+                
+                return managedDiet
+                
+            } else {
+                throw CoreDataStoreError.CannotFetch("Could not find entity with id: \(id)")
+            }
+            
+        } catch {
+            throw CoreDataStoreError.CannotFetch("Could not find entity with id: \(id)")
+        }
+    }
 }

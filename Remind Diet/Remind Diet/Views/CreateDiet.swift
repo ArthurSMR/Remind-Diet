@@ -24,7 +24,7 @@ struct CreateDiet: View {
             
                 Form {
                     Section {
-                        TextField("Nova dieta", text: $name)
+                        TextField("Nova Dieta", text: $name)
                     }
                     Section {
                         HStack {

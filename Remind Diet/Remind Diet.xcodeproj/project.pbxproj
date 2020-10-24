@@ -15,6 +15,7 @@
 		363B3DD224CB60CD00C11CB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 363B3DD024CB60CD00C11CB9 /* LaunchScreen.storyboard */; };
 		363B3DDA24CB6A9200C11CB9 /* CreateDiet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B3DD924CB6A9200C11CB9 /* CreateDiet.swift */; };
 		368BCD9F2540ABDA00C2646E /* Remind Diet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 368BCD9D2540ABDA00C2646E /* Remind Diet.xcdatamodeld */; };
+		36B38F9625448C0C00524A70 /* MealEntity+Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B38F9525448C0C00524A70 /* MealEntity+Convert.swift */; };
 		36B9EEDF25434CBF00C8325E /* DietDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9EEDE25434CBF00C8325E /* DietDAO.swift */; };
 		36B9EEE225434D1200C8325E /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9EEE125434D1200C8325E /* CoreDataStore.swift */; };
 		36B9EEE6254389D600C8325E /* DietWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9EEE5254389D600C8325E /* DietWorker.swift */; };
@@ -39,6 +40,7 @@
 		363B3DD324CB60CD00C11CB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		363B3DD924CB6A9200C11CB9 /* CreateDiet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDiet.swift; sourceTree = "<group>"; };
 		368BCD9E2540ABDA00C2646E /* DietsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DietsModel.xcdatamodel; sourceTree = "<group>"; };
+		36B38F9525448C0C00524A70 /* MealEntity+Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MealEntity+Convert.swift"; sourceTree = "<group>"; };
 		36B9EEDE25434CBF00C8325E /* DietDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietDAO.swift; sourceTree = "<group>"; };
 		36B9EEE125434D1200C8325E /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		36B9EEE5254389D600C8325E /* DietWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietWorker.swift; sourceTree = "<group>"; };
@@ -82,12 +84,12 @@
 		363B3DC424CB60C800C11CB9 /* Remind Diet */ = {
 			isa = PBXGroup;
 			children = (
-				36B9EEE925438E3300C8325E /* Extensions */,
 				368BCDA32540ADBA00C2646E /* Main Application */,
 				36E6FF1B24CC788A002A4B43 /* Models */,
 				36E6FF1A24CC787E002A4B43 /* ViewModels */,
 				36E6FF1924CC7869002A4B43 /* Views */,
 				368BCDA22540AD7700C2646E /* Database */,
+				36B9EEE925438E3300C8325E /* Extensions */,
 				3698D89B252E2E30008CCFF0 /* Resources */,
 				363B3DD024CB60CD00C11CB9 /* LaunchScreen.storyboard */,
 				363B3DD324CB60CD00C11CB9 /* Info.plist */,
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				36B9EEEF25438EB100C8325E /* DietEntity+Convert.swift */,
+				36B38F9525448C0C00524A70 /* MealEntity+Convert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				363B3DC624CB60C800C11CB9 /* AppDelegate.swift in Sources */,
 				36FDC5B12540AAFA0087ACE6 /* Meal.swift in Sources */,
 				36E6FF1824CC785F002A4B43 /* DietListViewModel.swift in Sources */,
+				36B38F9625448C0C00524A70 /* MealEntity+Convert.swift in Sources */,
 				363B3DDA24CB6A9200C11CB9 /* CreateDiet.swift in Sources */,
 				368BCD9F2540ABDA00C2646E /* Remind Diet.xcdatamodeld in Sources */,
 				36CCF27B25376AAD00244D09 /* WeekDaysView.swift in Sources */,

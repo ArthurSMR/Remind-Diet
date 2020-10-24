@@ -11,7 +11,7 @@ import SwiftUI
 struct CreateDiet: View {
     
     @Binding var showModal: Bool
-    @State var name: String = "Nova dieta"
+    @State var name: String = ""
     @State var meals: [Meal] = []
     @State var initialDate: Date = Date()
     @State var finishDate: Date = Date()
@@ -24,7 +24,7 @@ struct CreateDiet: View {
             
                 Form {
                     Section {
-                        TextField("", text: $name)
+                        TextField("Nova dieta", text: $name)
                     }
                     Section {
                         HStack {
@@ -34,7 +34,7 @@ struct CreateDiet: View {
                                 }
                             }
                         }
-                        DatePicker("Início", selection: $initialDate, displayedComponents: .date)
+                        DatePicker("Início", selection: $initialDate, in: Date()..., displayedComponents: .date)
                         DatePicker("Fim", selection: $finishDate, in: initialDate..., displayedComponents: .date)
 
                         Stepper(onIncrement: {
@@ -44,10 +44,18 @@ struct CreateDiet: View {
                         }) {
                             Text("Refeições: \(self.meals.count)")
                         } // Stepper
+
                     }
+                    
                     Section(header: self.meals.count > 0 ? Text("SUAS REFEIÇÕES") : Text("")) {
                         ForEach(self.meals.indices, id: \.self) { index in
-                            MealCell(index: index, meal: self.meals[index])
+                            DatePicker("Refeição \(index + 1)", selection: $meals[index].time, displayedComponents: .hourAndMinute)
+                        }
+                    }
+                    
+                    Section {
+                        ForEach(self.meals, id: \.self) { meal in
+                            Text("You selected \(meal.time)")
                         }
                     }
                 } // Form
@@ -63,20 +71,7 @@ struct CreateDiet: View {
     func saveNewDiet() {
         let days = Frequency.allCases[weekDayIndex]
         
-        self.dietListViewModel.save(name: self.name, frequency: days, initialDate: self.initialDate, finishDate: self.finishDate, meals: self.meals)
-    }
-}
-
-struct MealCell: View {
-    var index: Int
-    @State var meal: Meal
-    
-    var body: some View {
-        if #available(iOS 14.0, *) {
-            DatePicker("Refeição \(index + 1)", selection: $meal.time, displayedComponents: .hourAndMinute)
-        } else {
-            // Fallback on earlier versions
-        }
+        self.dietListViewModel.save(name: self.name, frequency: days, initialDate: self.initialDate, finishDate: self.finishDate, meals: meals)
     }
 }
 

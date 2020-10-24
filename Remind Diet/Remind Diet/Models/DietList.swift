@@ -10,26 +10,26 @@ import UIKit
 
 struct DietList {
     var diets: [Diet]
+}
+
+struct Diet: Hashable {
+    var id: UUID
+    var name: String
+    var frequency: Frequency
+    var initialDate: Date
+    var finishDate: Date
+    var meals: [Meal]
     
-    struct Diet: Hashable {
-        var id: UUID
-        var name: String
-        var days: DaysOfTheWeek
-        var initialDate: Date
-        var finishDate: Date
-        var meals: [Meal]
-        
-        init(id: UUID,name: String, days: DaysOfTheWeek, initialDate: Date, finishDate: Date, meals: [Meal]) {
-            self.id = id
-            self.name = name
-            self.days = days
-            self.initialDate = initialDate
-            self.finishDate = finishDate
-            self.meals = meals
-        }
-        
-        func daysBetween() -> Int {
-            Calendar.current.dateComponents([.day], from: self.initialDate, to: self.finishDate).day ?? 0
-        }
+    init(id: UUID,name: String, frequency: Frequency, initialDate: Date, finishDate: Date, meals: [Meal]) {
+        self.id = id
+        self.name = name
+        self.frequency = frequency
+        self.initialDate = initialDate
+        self.finishDate = finishDate
+        self.meals = meals
+    }
+    
+    func daysBetween() -> Int {
+        Calendar.current.dateComponents([.day], from: self.initialDate, to: self.finishDate).day ?? 0
     }
 }

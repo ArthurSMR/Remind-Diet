@@ -49,7 +49,7 @@ struct CreateNewDietButton: View {
 struct DietCell: View {
     
     @State var isToggle: Bool = false
-    var diet: DietList.Diet
+    var diet: Diet
     
     var body: some View {
         Toggle(isOn: $isToggle) {
@@ -57,7 +57,7 @@ struct DietCell: View {
                 Text(diet.name)
                     .font(.title)
                     .fontWeight(.semibold)
-                Text(diet.days.rawValue)
+                Text(diet.frequency.rawValue)
                     .foregroundColor(.gray)
                 Text("\(diet.daysBetween()) dias para o término da dieta")
                     .foregroundColor(.green)

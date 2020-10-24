@@ -9,28 +9,48 @@
 import SwiftUI
 
 class DietListViewModel: ObservableObject {
+    
     @Published private var dietListViewModel: DietList
+    
+    private var dietWorker: DietWorker = DietWorker()
     
     static func createDietList() -> DietList {
         DietList(diets: MockDiets.diets)
     }
     
     init() {
-        self.dietListViewModel = DietListViewModel.createDietList()
+        dietListViewModel = DietList(diets: [])
+        self.fetchDiets()
     }
     
     // MARK: - Access to model
     
-    var diets: [DietList.Diet] {
+    var diets: [Diet] {
         dietListViewModel.diets
     }
     
     // MARK: - Intents
     
-    func save(name: String, days: DaysOfTheWeek, initialDate: Date, finishDate: Date, meals: [Meal]) {
+    func save(name: String, frequency: Frequency, initialDate: Date, finishDate: Date, meals: [Meal]) {
         let uuid = UUID()
-        let newDiet = DietList.Diet(id: uuid, name: name, days: days, initialDate: initialDate, finishDate: finishDate, meals: meals)
+        let newDiet = Diet(id: uuid, name: name, frequency: frequency, initialDate: initialDate, finishDate: finishDate, meals: meals)
+        
+        dietWorker.createDiet(diet: newDiet) { (result) in
+            // TODO: treat error here
+        }
+        
         dietListViewModel.diets.append(newDiet)
+    }
+    
+    func fetchDiets() {
+        
+        dietWorker.fetchDiet { (diets, error) in
+            if let error = error {
+                print(error)
+            } else {
+                self.dietListViewModel = DietList(diets: diets)
+            }
+        }
     }
 }
 

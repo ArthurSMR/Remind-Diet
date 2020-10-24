@@ -29,8 +29,8 @@ struct CreateDiet: View {
                     Section {
                         HStack {
                             Picker(selection: $weekDayIndex, label: Text("Dias da semana")) {
-                                ForEach(0 ..< DaysOfTheWeek.allCases.count, id: \.self) {
-                                    Text(DaysOfTheWeek.allCases[$0].rawValue).tag(weekDayIndex)
+                                ForEach(0 ..< Frequency.allCases.count, id: \.self) {
+                                    Text(Frequency.allCases[$0].rawValue).tag(weekDayIndex)
                                 }
                             }
                         }
@@ -61,9 +61,9 @@ struct CreateDiet: View {
     }
     
     func saveNewDiet() {
-        let days = DaysOfTheWeek.allCases[weekDayIndex]
+        let days = Frequency.allCases[weekDayIndex]
         
-        self.dietListViewModel.save(name: self.name, days: days, initialDate: self.initialDate, finishDate: self.finishDate, meals: self.meals)
+        self.dietListViewModel.save(name: self.name, frequency: days, initialDate: self.initialDate, finishDate: self.finishDate, meals: self.meals)
     }
 }
 

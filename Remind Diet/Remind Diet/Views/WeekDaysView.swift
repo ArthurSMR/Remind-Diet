@@ -10,10 +10,10 @@ import SwiftUI
 
 struct WeekDaysView: View {
     
-    @State var selectedDays: [DaysOfTheWeek] = []
+    @State var selectedDays: [Frequency] = []
     
     var body: some View {
-        ForEach(DaysOfTheWeek.allCases, id: \.self) { day in
+        ForEach(Frequency.allCases, id: \.self) { day in
             DayCell(day: day, isSelected: self.selectedDays.contains(day)) {
                 if self.selectedDays.contains(day) {
                     self.selectedDays.removeAll(where: { $0 == day })
@@ -27,7 +27,7 @@ struct WeekDaysView: View {
 }
 
 struct DayCell: View {
-    var day: DaysOfTheWeek
+    var day: Frequency
     var isSelected: Bool
     var action: () -> Void
     var body: some View {

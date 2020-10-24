@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum DaysOfTheWeek: String, CaseIterable {
+enum Frequency: String, CaseIterable {
     case allDays = "Todos os dias"
     case onlyWeekDays = "Dias da semana"
     case onlyWeekend = "Finais de semana"

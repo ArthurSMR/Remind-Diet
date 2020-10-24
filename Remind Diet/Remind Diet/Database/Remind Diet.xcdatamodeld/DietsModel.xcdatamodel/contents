@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="DietListEntity" representedClassName="DietListEntity" syncable="YES"/>
+    <entity name="DietEntity" representedClassName="DietEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="finishDate" attributeType="Date" defaultDateTimeInterval="-31615200" usesScalarValueType="NO"/>
+        <attribute name="frequency" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="initialDate" attributeType="Date" defaultDateTimeInterval="-31615200" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="meals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MealEntity" inverseName="diet" inverseEntity="MealEntity"/>
+    </entity>
+    <entity name="MealEntity" representedClassName="MealEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="time" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="diet" maxCount="1" deletionRule="Nullify" destinationEntity="DietEntity" inverseName="meals" inverseEntity="DietEntity"/>
+    </entity>
     <elements>
-        <element name="DietListEntity" positionX="-63" positionY="-18" width="128" height="43"/>
+        <element name="DietEntity" positionX="-54" positionY="-9" width="128" height="133"/>
+        <element name="MealEntity" positionX="-36" positionY="45" width="128" height="73"/>
     </elements>
 </model>

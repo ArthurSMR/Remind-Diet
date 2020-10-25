@@ -17,22 +17,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
+                
                 List {
-                    ForEach(dietListViewModel.diets, id: \.self) { diet in
-                        DietCell(diet: diet)
-                            .onLongPressGesture(perform: {
-                            self.showModal.toggle()
-                        }).sheet(isPresented: $showModal) {
-                            CreateDiet(showModal: $showModal, dietListViewModel: dietListViewModel) // Precisa setar tela como update
-                        }
-                    }
-                    .onDelete(perform: onDelete)
-
+                    if dietListViewModel.diets.isEmpty {
+                        EmptyDietList()
+                    } else {
+                        ForEach(dietListViewModel.diets, id: \.self) { diet in
+                            DietCell(diet: diet)
+                                .onLongPressGesture(perform: {
+                                    self.showModal.toggle()
+                                }).sheet(isPresented: $showModal) {
+                                    CreateDiet(showModal: $showModal, dietListViewModel: dietListViewModel) // Precisa setar tela como update
+                                }
+                        } // ForEach
+                        .onDelete(perform: onDelete)
+                    } // Else
                 } // List
-                .navigationBarTitle("Suas dietas")
-                .listStyle(GroupedListStyle())
-                .navigationBarItems(leading: EditButton())
-                .environment(\.editMode, $editMode)
                 
                 Button(action: {
                     self.showModal.toggle()
@@ -42,6 +42,10 @@ struct ContentView: View {
                     CreateDiet(showModal: self.$showModal, dietListViewModel: self.dietListViewModel)
                 }
             } // VStack
+            .navigationBarTitle("Suas dietas")
+            .listStyle(GroupedListStyle())
+            .navigationBarItems(leading: EditButton())
+            .environment(\.editMode, $editMode)
         }
     }
     
@@ -54,6 +58,18 @@ struct ContentView: View {
     }
 }
 
+struct EmptyDietList: View {
+    var body: some View {
+        HStack {
+            Image("diet")
+                .resizable()
+                .frame(width: 32, height: 32, alignment: .center)
+                .foregroundColor(.green)
+            Text("Você não possui nenhuma dieta")
+        }
+        
+    }
+}
 
 
 func delete(diet: Diet) {

@@ -52,12 +52,6 @@ struct CreateDiet: View {
                             DatePicker("Refeição \(index + 1)", selection: $meals[index].time, displayedComponents: .hourAndMinute)
                         }
                     }
-                    
-                    Section {
-                        ForEach(self.meals, id: \.self) { meal in
-                            Text("You selected \(meal.time)")
-                        }
-                    }
                 } // Form
                 .listStyle(GroupedListStyle())
                 .navigationBarTitle("Criar dieta", displayMode: .inline)
